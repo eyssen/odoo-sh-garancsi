@@ -1,0 +1,4 @@
+[submodule "odoo-addons-ppp"]
+	path = odoo-addons-ppp
+	url = git@github.com:eYssen-IT-Services/odoo-addons-ppp.git
+	branch = master
