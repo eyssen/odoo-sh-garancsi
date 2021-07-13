@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="saferpay_acquirer_button">
+        <input type="hidden" name="data_set" t-att-data-action-url="form_url" data-remove-me="" />
+    </template>
+</odoo>

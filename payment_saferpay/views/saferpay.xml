@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="acquirer_form_saferpay" model="ir.ui.view">
+        <field name="name">acquirer.form.saferpay</field>
+        <field name="model">payment.acquirer</field>
+        <field name="inherit_id" ref="payment.acquirer_form" />
+        <field name="arch" type="xml">
+            <xpath expr='//group[@name="acquirer"]' position='inside'>
+                <group attrs="{'invisible': [('provider', '!=', 'saferpay')]}">
+                    <field name="saferpay_username" attrs="{'required':[ ('provider', '=', 'saferpay'), ('state', '!=', 'disabled')]}" />
+                    <field name="saferpay_password" attrs="{'required':[ ('provider', '=', 'saferpay'), ('state', '!=', 'disabled')]}" password="True" />
+                    <field name="saferpay_terminal_id" attrs="{'required':[ ('provider', '=', 'saferpay'), ('state', '!=', 'disabled')]}" />
+                    <field name="saferpay_customer_id" attrs="{'required':[ ('provider', '=', 'saferpay'), ('state', '!=', 'disabled')]}" />
+                    <div class="mt8 oe_inline">
+                        <a href='https://saferpay.github.io/sndbx/paymentmeans.html' target="_blank"><i class="fa fa-arrow-right"/> Test Credentials</a>
+                    </div>
+                </group>
+            </xpath>
+        </field>
+    </record>
+    <record id="transaction_form_saferpay" model="ir.ui.view">
+        <field name="name">acquirer.transaction.form.saferpay</field>
+        <field name="model">payment.transaction</field>
+        <field name="inherit_id" ref="payment.transaction_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state_message']//.." position="before">
+                <group attrs="{'invisible': [('provider', '!=', 'saferpay')]}">
+                    <field name="saferpay_token" readonly="1" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
